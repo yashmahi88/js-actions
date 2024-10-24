@@ -1,0 +1,16 @@
+name: Publish Image to docker hub
+
+on: [workflow_dispatch]
+
+jobs:
+    publish-image:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+            - name: build
+              run: |
+                docker build . -t yashmahi04/gitactions:latest
+            - name: publish
+              run: |
+                docker push yashmahi04/gitactions:latest
